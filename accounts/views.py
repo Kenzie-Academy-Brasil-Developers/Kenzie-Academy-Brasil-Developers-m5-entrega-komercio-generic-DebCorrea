@@ -1,4 +1,3 @@
-import ipdb
 from rest_framework import generics
 
 from accounts.models import Account
