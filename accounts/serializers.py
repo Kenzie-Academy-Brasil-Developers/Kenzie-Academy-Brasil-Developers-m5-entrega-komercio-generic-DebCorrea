@@ -25,3 +25,6 @@ class AccountSerializer(serializers.ModelSerializer):
             "is_active",
             "is_superuser",
         ]
+
+    def create(self, validated_data):
+        return Account.objects.create_user(**validated_data)
