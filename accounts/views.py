@@ -15,6 +15,6 @@ class AccountNewestView(generics.ListAPIView):
     def get_queryset(self):
         num = self.request.parser_context["kwargs"]["num"]
 
-        queryset = Account.objects.all().order_by("date_joined").values()
+        queryset = Account.objects.all().order_by("-date_joined").values()
 
         return queryset[:num]
