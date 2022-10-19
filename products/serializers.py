@@ -20,3 +20,24 @@ class DetailedProductSerializer(serializers.ModelSerializer):
         ]
 
         read_only_fields = ["is_active"]
+
+
+class GenericProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+
+        fields = [
+            "description",
+            "price",
+            "quantity",
+            "is_active",
+            "seller",
+        ]
+
+        read_only_fields = [
+            "description",
+            "price",
+            "quantity",
+            "is_active",
+            "seller",
+        ]
