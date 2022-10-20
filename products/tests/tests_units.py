@@ -57,3 +57,82 @@ class ProductsModelTests(TestCase):
         """
 
         self.assertTrue(self.product._meta.get_field("is_active").default)
+
+
+class ProductAccountRelationshipTest(TestCase):
+    @classmethod
+    def setUpTestData(cls) -> None:
+        cls.account_1 = Account.objects.create_user(
+            {
+                "username": "ale",
+                "password": "abcd",
+                "first_name": "alexandre",
+                "last_name": "alves",
+                "seller": True,
+            }
+        )
+
+        cls.account_2 = Account.objects.create_user(
+            {
+                "username": "deb",
+                "password": "1234",
+                "first_name": "debora",
+                "last_name": "correa",
+                "seller": True,
+            }
+        )
+
+        cls.product_1_data = {
+            "description": "Celular boladão",
+            "price": "1000.99",
+            "quantity": 67,
+        }
+
+        cls.product_2_data = {
+            "description": "Mouse bonitinho",
+            "price": "299.75",
+            "quantity": 13,
+        }
+
+    def test_account_may_contain_multiple_products(self):
+        """
+        Verifica se uma `account` pode conter mais de um `product`
+        """
+
+        self.product_1 = Product.objects.create(
+            description=self.product_1_data["description"],
+            price=self.product_1_data["price"],
+            quantity=self.product_1_data["quantity"],
+            seller=self.account_1,
+        )
+
+        self.product_2 = Product.objects.create(
+            description=self.product_2_data["description"],
+            price=self.product_2_data["price"],
+            quantity=self.product_2_data["quantity"],
+            seller=self.account_1,
+        )
+
+        self.assertEquals(self.account_1.products.count(), 2)
+
+        self.assertIs(self.product_1.seller, self.account_1)
+        self.assertIs(self.product_2.seller, self.account_1)
+
+    def test_product_may_contain_one_account_only(self):
+        """
+        Verifica se um `product` pode conter apenas um `seller`
+        """
+
+        self.product_1 = Product.objects.create(
+            description=self.product_1_data["description"],
+            price=self.product_1_data["price"],
+            quantity=self.product_1_data["quantity"],
+            seller=self.account_1,
+        )
+
+        self.product_1.seller = self.account_2
+        self.product_1.save()
+
+        self.assertNotIn(self.product_1, self.account_1.products.all())
+
+        self.assertIn(self.product_1, self.account_2.products.all())
