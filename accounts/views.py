@@ -1,9 +1,11 @@
 from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAdminUser
 
 from accounts.models import Account
 from accounts.permissions import IsAccountOwner
-from accounts.serializers import AccountSerializer
+from accounts.serializers import (AccountDeactivateActivateSerializer,
+                                  AccountSerializer)
 
 
 class AccountView(generics.ListCreateAPIView):
@@ -33,3 +35,11 @@ class AccountUpdateView(generics.UpdateAPIView):
         kwargs["partial"] = True
         request.data["is_active"] = request.user.is_active
         return self.update(request, *args, **kwargs)
+
+
+class AccountDeactivateActivateView(generics.UpdateAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAdminUser]
+
+    queryset = Account.objects
+    serializer_class = AccountDeactivateActivateSerializer
