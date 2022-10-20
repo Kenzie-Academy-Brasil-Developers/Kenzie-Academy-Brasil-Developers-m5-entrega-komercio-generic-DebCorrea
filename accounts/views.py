@@ -1,6 +1,8 @@
 from rest_framework import generics
+from rest_framework.authentication import TokenAuthentication
 
 from accounts.models import Account
+from accounts.permissions import IsAccountOwner
 from accounts.serializers import AccountSerializer
 
 
@@ -18,3 +20,16 @@ class AccountNewestView(generics.ListAPIView):
         queryset = Account.objects.all().order_by("-date_joined").values()
 
         return queryset[:num]
+
+
+class AccountUpdateView(generics.UpdateAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAccountOwner]
+
+    queryset = Account.objects
+    serializer_class = AccountSerializer
+
+    def partial_update(self, request, *args, **kwargs):
+        kwargs["partial"] = True
+        request.data["is_active"] = request.user.is_active
+        return self.update(request, *args, **kwargs)
