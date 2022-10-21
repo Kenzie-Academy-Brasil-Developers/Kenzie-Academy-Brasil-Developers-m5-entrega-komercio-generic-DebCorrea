@@ -9,7 +9,7 @@ from accounts.serializers import (AccountDeactivateActivateSerializer,
 
 
 class AccountView(generics.ListCreateAPIView):
-    queryset = Account.objects
+    queryset = Account.objects.all()
     serializer_class = AccountSerializer
 
 
@@ -28,7 +28,7 @@ class AccountUpdateView(generics.UpdateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAccountOwner]
 
-    queryset = Account.objects
+    queryset = Account.objects.all()
     serializer_class = AccountSerializer
 
     def partial_update(self, request, *args, **kwargs):
@@ -41,5 +41,5 @@ class AccountDeactivateActivateView(generics.UpdateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAdminUser]
 
-    queryset = Account.objects
+    queryset = Account.objects.all()
     serializer_class = AccountDeactivateActivateSerializer
