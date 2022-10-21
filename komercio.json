@@ -1,0 +1,111 @@
+[
+  {
+    "model": "accounts.account",
+    "pk": "2792d392-65f4-4176-afc2-53add2143909",
+    "fields": {
+      "password": "pbkdf2_sha256$390000$Itb08BNTqnqwvdeBDWKDZk$28Xji0KIZDAWnswYdlcoEN8ePomaplfPVcva6YgZco8=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-10-20T20:44:14.042Z",
+      "username": "deb",
+      "first_name": "deb",
+      "last_name": "correa",
+      "is_seller": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.account",
+    "pk": "2c29c271-8d1b-472c-9469-0b2b8d8daa96",
+    "fields": {
+      "password": "pbkdf2_sha256$390000$CKSwXiGu97jQPUe0e6xmU6$Ht2HoppklKqCFaUKEev6pcDDD+lnab3G1s8nHbp75Uc=",
+      "last_login": null,
+      "is_superuser": true,
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2022-10-20T20:43:54.692Z",
+      "username": "gohan",
+      "first_name": "go",
+      "last_name": "han",
+      "is_seller": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.account",
+    "pk": "44001963-dba2-475c-8303-4d9b6184fad2",
+    "fields": {
+      "password": "pbkdf2_sha256$390000$NmXdz8SOapoetjLrFtKRcm$UpP78UkrS8iggQ3QMR6/dev3jJiDDDTPqE4owDnzA+4=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-10-20T20:44:04.603Z",
+      "username": "xandre",
+      "first_name": "alexandre",
+      "last_name": "alves",
+      "is_seller": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.account",
+    "pk": "b79bade6-aa4b-4ca6-98f3-f45d77b2cc11",
+    "fields": {
+      "password": "pbkdf2_sha256$390000$4WW90OjnfJLFputOerLH7P$vwoQg7msdJlVo+rI7ho5zby8511O9/5tYHQJCs9yKBI=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-10-20T20:44:10.244Z",
+      "username": "teste",
+      "first_name": "teste",
+      "last_name": "alves",
+      "is_seller": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "50b8eb4f-d199-42ce-ad81-069c146154e6",
+    "fields": {
+      "description": "Mouse bonitinho",
+      "price": "299.75",
+      "quantity": 13,
+      "is_active": true,
+      "seller": "44001963-dba2-475c-8303-4d9b6184fad2"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "55eed4ba-48e0-4cac-b92a-a0eb48e175eb",
+    "fields": {
+      "description": "Smartband XYZ 1000000",
+      "price": "95.67",
+      "quantity": 13,
+      "is_active": true,
+      "seller": "44001963-dba2-475c-8303-4d9b6184fad2"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "9e3195c6-2b51-4bb3-af70-ea1033c93163",
+    "fields": {
+      "description": "Celular boladão",
+      "price": "1000.99",
+      "quantity": 67,
+      "is_active": true,
+      "seller": "2792d392-65f4-4176-afc2-53add2143909"
+    }
+  }
+]
